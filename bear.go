@@ -132,7 +132,7 @@ func flying(reqChan chan Request) {
             res := kfc(req)
             res.Write(req.Conn)
         }else{
-            log.Printf("Format error:%v",req.CommandCode)
+            log.Printf("commandCode error:%v",req.CommandCode)
             ERROR(req.Conn)
         }
     }
@@ -169,6 +169,8 @@ func handler(r io.Reader,conn net.Conn,reqChan chan Request) error{
         req.Conn = conn
         req.Dog = lock
         reqChan <- req
+    }else{
+        log.Printf("Format error:%s",e)
     }
     return io.EOF
 }
