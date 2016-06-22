@@ -5,7 +5,7 @@ sdk 目前只有 php 版本:
 https://github.com/nixuehan/bear/tree/master/sdk
 
 
-按照这个格式： 毫秒40bit + 机房2bit + 机器6bit + 业务8bit + 序列号7bit
+按照这个格式生成全局唯一id： 毫秒40bit + 机房2bit + 机器6bit + 业务8bit + 序列号7bit 
 
 下载符合自己机器的版本，运行即可
 
