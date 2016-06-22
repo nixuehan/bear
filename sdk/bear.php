@@ -57,7 +57,7 @@ class Bear {
 
 	/**
 	 * 获取全局id.
-	 * @param int $workID  业务id  范围 1 - 255   比如 1:用户  2:动态  ....
+	 * @param int $workID  业务id  范围 1 - 255   比如 1:用户  2:动态 又或者  1:微博系统  2:招聘系统
 	 * @return bool or int
 	 */
     public function ID($workID = 1) {
@@ -81,6 +81,6 @@ class Bear {
 
 //example
 $bear = Bear::factory();
-var_dump($bear->ID(23234));
+var_dump($bear->ID(34));
 
 

@@ -17,6 +17,7 @@ import(
 )
 
 var host = flag.String("h","localhost","Bound IP. default:localhost")
+var port = flag.String("p","8384","port. default:8384")
 var room = flag.Int("r",1,"server room. default:1")
 var serverId = flag.Int("s",1,"server id. default:1")
 
@@ -95,7 +96,7 @@ func(this *Response)Write(w io.WriteCloser) (int,error){
 
 func GetIdHandler(req Request) Response{
     now := time.Now()
-	nanos := now.UnixNano()
+    nanos := now.UnixNano()
     millis := nanos / 1000000
 
     workId := req.WordId
@@ -194,7 +195,7 @@ func waitForYou(ls net.Listener) {
 func main() {
     flag.Parse()
     log.SetFlags(log.LstdFlags)
-    ls,e := net.Listen("tcp",*host + ":8384")
+    ls,e := net.Listen("tcp",*host + ":" + *port)
     if e != nil {
         log.Fatalf("Error bound: %s",e)
     }
