@@ -29,13 +29,4 @@ https://github.com/nixuehan/bear/tree/master/sdk
 
 
 
-
-###高可用建议：
-
- haprxoy	
- 			->  bear1 -s 1
-
- 			->  bear2 -s 2
-
-
- 其他不懂 看源代码吧
+###其他不懂 看源代码吧
