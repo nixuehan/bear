@@ -29,9 +29,12 @@ https://github.com/nixuehan/bear/tree/master/sdk
 
 
 
- ###高可用的话建议
 
- haprxoy	->  bear1 -s 1
+###高可用建议：
+
+ haprxoy	
+ 			->  bear1 -s 1
+
  			->  bear2 -s 2
 
 
