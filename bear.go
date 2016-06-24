@@ -14,6 +14,7 @@ import(
     "sync"
     "encoding/binary"
     "math/rand"
+    "runtime"
 )
 
 var host = flag.String("h","localhost","Bound IP. default:localhost")
@@ -177,7 +178,6 @@ func handler(r io.Reader,conn net.Conn,reqChan chan Request) error{
 }
 
 func waitForYou(ls net.Listener) {
-
     var reqChan = make(chan Request)
 
     go flying(reqChan)
@@ -193,6 +193,9 @@ func waitForYou(ls net.Listener) {
 }
 
 func main() {
+    
+    runtime.GOMAXPROCS(runtime.NumCPU())
+
     flag.Parse()
     log.SetFlags(log.LstdFlags)
     ls,e := net.Listen("tcp",*host + ":" + *port)
