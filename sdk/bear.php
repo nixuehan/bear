@@ -57,8 +57,8 @@ class Bear {
 
 	/**
 	 * 获取全局id.
-	 * @param int $workID  业务id  范围 1 - 255   比如 1:用户  2:动态 又或者  1:微博系统  2:招聘系统
-	 * @return bool or int
+	 * @param int8 $workID  业务id  范围 1 - 255   比如 1:用户  2:动态 又或者  1:微博系统  2:招聘系统
+	 * @return bool or int64
 	 */
     public function ID($workID = 1) {
         if($workID < 1 || $workID > 255) {
@@ -77,10 +77,21 @@ class Bear {
         }
         return $id;
     }
+
+    /**
+     * 获取业务id.
+     * @param int64 $id
+     * @return bool or int8
+     */
+    public function workID($id) {
+        $workID = ($id >> 7) & 0xFF;
+        return $workID;
+    }
 }
 
 //example
-$bear = Bear::factory();
-var_dump($bear->ID(34));
+$bear = Bear::factory("127.0.0.1");
+$id = $bear->ID(244);
+var_dump($bear->workID($id));
 
 
