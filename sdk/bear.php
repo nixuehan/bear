@@ -87,11 +87,21 @@ class Bear {
         $workID = ($id >> 7) & 0xFF;
         return $workID;
     }
+
+    /**
+     * 获取ID生成时间戳
+     * @param int64 $id
+     * @return int
+     */
+    public function time($id) {
+        $millis = (($id >> 22) & 0x1FFFFFFFFFF) / 1000;
+        return (int)$millis;
+    }
 }
 
-//example
-$bear = Bear::factory("127.0.0.1");
-$id = $bear->ID(244);
-var_dump($bear->workID($id));
+// //example
+// $bear = Bear::factory("127.0.0.1");
+// $id = $bear->ID(233);
+// $a = $bear->time($id);
 
 

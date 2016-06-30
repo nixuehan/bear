@@ -101,8 +101,8 @@ func GetIdHandler(req Request) Response{
     millis := nanos / 1000000
 
     workId := req.WordId
-    //毫秒40 + 机房2 + 机器6 + 业务8+ 序列号7
-    id := (millis << 22) + (int64(*room) << 21) + (int64(*serverId) << 15) + (int64(workId) << 7)
+    //毫秒41 + 机房2 + 机器5 + 业务8+ 序列号7
+    id := (millis << 22) + (int64(*room) << 20) + (int64(*serverId) << 15) + (int64(workId) << 7)
     
     var uniqueID int64
 
