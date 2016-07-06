@@ -53,6 +53,11 @@ func init() {
 }
 
 func must(e error) {
+    defer func() {
+        if err := recover();err != nil{
+            log.Fatalf("Fatal error:%v",err)
+        }
+    }()
     if e != nil {
         panic(e)
     }
