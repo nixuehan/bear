@@ -53,11 +53,6 @@ func init() {
 }
 
 func must(e error) {
-    defer func() {
-        if err := recover();err != nil{
-            log.Fatalf("Fatal error:%v",err)
-        }
-    }()
     if e != nil {
         panic(e)
     }
@@ -198,7 +193,12 @@ func waitForYou(ls net.Listener) {
 }
 
 func main() {
-    
+    defer func() {
+        if err := recover();err != nil{
+            log.Printf("Fatal error:%v",err)
+        }
+    }()
+
     runtime.GOMAXPROCS(runtime.NumCPU())
 
     flag.Parse()
